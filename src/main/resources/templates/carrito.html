@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>Inventario</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+		integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="">App Inventario</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+
+				<li class="nav-item">
+					<a class="nav-link" href="/">Inicio</a>
+				</li>
+
+			</ul>
+		</div>
+	</nav>
+
+
+	<div class="container text-center">
+		<div>
+			<h1>Lista de carrito</h1>
+		</div>
+		<br>
+
+
+		<div>
+			<table class="table table-bordered">
+				<thead class="thead-dark">
+					<tr>
+						<th>ID</th>
+						<th>cantidad</th>
+						<th>producto</th>
+						<th>usuario</th>
+						<th>Acciones</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="car : ${lisCarrito}">
+						<td th:text="${car.id}"></td>
+						<td th:text="${car.cantidad}"></td>
+						<td th:text="${car.producto.nombre}"></td>
+						<td th:text="${car.usuario.email}"></td>
+						
+						<td>
+							<a th:href="@{'/carrito/editar'+'/'+ ${car.id}}" class="btn btn-info">Editar</a>
+							&nbsp;&nbsp;
+							<a th:href="@{'/carrito/eliminar'+'/'+ ${car.id}}" class="btn btn-danger">Eliminar</a>
+						</td>
+						
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+	</div>
+
+</body>
+
+</html>
